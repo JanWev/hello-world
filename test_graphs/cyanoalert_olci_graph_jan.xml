@@ -1,0 +1,359 @@
+<!--
+gpt -c 8G Z:\projects\ongoing\CyanoAlert\WorkingArea\WP4_ServicePlatform\cyanoalert_olci_graph.xml -p "Z:\projects\ongoing\CyanoAlert\WorkingArea\WP4_ServicePlatform\vicarious.properties" -SsourceProduct="Z:\projects\ongoing\CyanoAlert\WorkingArea\WP4_ServicePlatform\S3A_OL_1_EFR____20170826T155659_20170826T155959_20170826T180024_0179_021_268_2160_SVL_O_NR_002.SEN3" -t "Z:\projects\ongoing\CyanoAlert\WorkingArea\WP4_ServicePlatform\S3A_OL_1_EFR____20170826T155659_cyanoalert_grah_test.dim" 
+-->
+<graph id="Olci_CyanoAlert">
+	<version>1.0</version>
+	<node id="idepix">
+		<operator>Idepix.Sentinel3.Olci</operator>
+		<sources>
+		  <sourceProduct>${sourceProduct}</sourceProduct>
+		</sources>
+		<parameters>
+		  <computeCloudBuffer>true</computeCloudBuffer>
+		  <cloudBufferWidth>2</cloudBufferWidth>
+		</parameters>
+	 </node>
+
+    <node id="vicarious">
+        <operator>BandMaths</operator>
+        <sources>
+            <sourceProduct>${sourceProduct}</sourceProduct>
+        </sources>
+        <parameters>
+            <targetBands>
+                <targetBand>
+                    <name>Oa01_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa01_radiance, 913.9812317630276, 1.0e-4) ? NaN : Oa01_radiance / ${Oa01_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>1</spectralBandIndex>
+                    <spectralWavelength>400</spectralWavelength>
+                    <spectralBandwidth>15</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa02_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa02_radiance, 877.334085884504, 1.0e-4) ? NaN : Oa02_radiance / ${Oa02_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>2</spectralBandIndex>
+                    <spectralWavelength>412.5</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa03_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa03_radiance, 796.1270730709657, 1.0e-4) ? NaN : Oa03_radiance / ${Oa03_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>3</spectralBandIndex>
+                    <spectralWavelength>442.5</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa04_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa04_radiance, 754.9514318397269, 1.0e-4) ? NaN : Oa04_radiance / ${Oa04_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>4</spectralBandIndex>
+                    <spectralWavelength>490</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa05_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa05_radiance, 661.5928710484877, 1.0e-4) ? NaN : Oa05_radiance / ${Oa05_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>5</spectralBandIndex>
+                    <spectralWavelength>510</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa06_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa06_radiance, 809.60629854351287, 1.0e-4) ? NaN : Oa06_radiance / ${Oa06_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>6</spectralBandIndex>
+                    <spectralWavelength>560</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa07_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa07_radiance, 576.1581395426765, 1.0e-4) ? NaN : Oa07_radiance / ${Oa07_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>7</spectralBandIndex>
+                    <spectralWavelength>620</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa08_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa08_radiance, 574.4398430082947, 1.0e-4) ? NaN : Oa08_radiance / ${Oa08_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>8</spectralBandIndex>
+                    <spectralWavelength>665</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa09_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa09_radiance, 623.2575185084715, 1.0e-4) ? NaN : Oa09_radiance / ${Oa09_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>9</spectralBandIndex>
+                    <spectralWavelength>673.75</spectralWavelength>
+                    <spectralBandwidth>7.5</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa10_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa10_radiance, 506.83326963800937, 1.0e-4) ? NaN : Oa10_radiance / ${Oa10_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>10</spectralBandIndex>
+                    <spectralWavelength>681.25</spectralWavelength>
+                    <spectralBandwidth>7.5</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa11_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa11_radiance, 442.70399916451424, 1.0e-4) ? NaN : Oa11_radiance / ${Oa11_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>11</spectralBandIndex>
+                    <spectralWavelength>708.75</spectralWavelength>
+                    <spectralBandwidth>10</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa12_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa12_radiance, 471.8257776950486, 1.0e-4) ? NaN : Oa12_radiance / ${Oa12_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>12</spectralBandIndex>
+                    <spectralWavelength>753.75</spectralWavelength>
+                    <spectralBandwidth>7.5</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa13_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa13_radiance, 491.30539988866076, 1.0e-4) ? NaN : Oa13_radiance / ${Oa13_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>13</spectralBandIndex>
+                    <spectralWavelength>761.25</spectralWavelength>
+                    <spectralBandwidth>2.5</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa14_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa14_radiance, 566.9563756557181, 1.0e-4) ? NaN : Oa14_radiance / ${Oa14_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>14</spectralBandIndex>
+                    <spectralWavelength>764.375</spectralWavelength>
+                    <spectralBandwidth>3.75</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa15_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa15_radiance, 345.2246211259626, 1.0e-4) ? NaN : Oa15_radiance / ${Oa15_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>15</spectralBandIndex>
+                    <spectralWavelength>767.5</spectralWavelength>
+                    <spectralBandwidth>2.5</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa16_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa16_radiance, 347.5104749179445, 1.0e-4) ? NaN : Oa16_radiance / ${Oa16_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>16</spectralBandIndex>
+                    <spectralWavelength>778.75</spectralWavelength>
+                    <spectralBandwidth>15.0</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa17_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa17_radiance, 323.09016273356974, 1.0e-4) ? NaN : Oa17_radiance / ${Oa17_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>17</spectralBandIndex>
+                    <spectralWavelength>865</spectralWavelength>
+                    <spectralBandwidth>20.0</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa18_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa18_radiance, 360.4175960831344, 1.0e-4) ? NaN : Oa18_radiance / ${Oa18_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>18</spectralBandIndex>
+                    <spectralWavelength>885</spectralWavelength>
+                    <spectralBandwidth>10.0</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa19_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa19_radiance, 329.54077841481194, 1.0e-4) ? NaN : Oa19_radiance / ${Oa19_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>19</spectralBandIndex>
+                    <spectralWavelength>900</spectralWavelength>
+                    <spectralBandwidth>10.0</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa20_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa20_radiance, 213.89181678649038, 1.0e-4) ? NaN : Oa20_radiance / ${Oa20_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>20</spectralBandIndex>
+                    <spectralWavelength>940</spectralWavelength>
+                    <spectralBandwidth>20.0</spectralBandwidth>
+                </targetBand>
+                <targetBand>
+                    <name>Oa21_radiance</name>
+                    <type>float32</type>
+                    <expression>feq(Oa21_radiance, 212.410729767289, 1.0e-4) ? NaN : Oa21_radiance / ${Oa21_vic}</expression>
+                    <unit>mW.m-2.sr-1.nm-1</unit>
+                    <noDataValue>NaN</noDataValue>
+                    <spectralBandIndex>20</spectralBandIndex>
+                    <spectralWavelength>940</spectralWavelength>
+                    <spectralBandwidth>40.0</spectralBandwidth>
+                </targetBand>
+            </targetBands>
+        </parameters>
+    </node>
+
+    <node id="subset"> <!-- remove the calibrated bands-->
+        <operator>Subset</operator>
+        <sources>
+            <source>${sourceProduct}</source>
+        </sources>
+        <parameters>
+            <!-- all bands except radiances -->
+            <sourceBands>altitude,latitude,longitude,detector_index,FWHM_band_1,FWHM_band_2,FWHM_band_3,FWHM_band_4,FWHM_band_5,FWHM_band_6,FWHM_band_7,FWHM_band_8,FWHM_band_9,FWHM_band_10,FWHM_band_11,FWHM_band_12,FWHM_band_13,FWHM_band_14,FWHM_band_15,FWHM_band_16,FWHM_band_17,FWHM_band_18,FWHM_band_19,FWHM_band_20,FWHM_band_21,frame_offset,lambda0_band_1,lambda0_band_2,lambda0_band_3,lambda0_band_4,lambda0_band_5,lambda0_band_6,lambda0_band_7,lambda0_band_8,lambda0_band_9,lambda0_band_10,lambda0_band_11,lambda0_band_12,lambda0_band_13,lambda0_band_14,lambda0_band_15,lambda0_band_16,lambda0_band_17,lambda0_band_18,lambda0_band_19,lambda0_band_20,lambda0_band_21,solar_flux_band_1,solar_flux_band_2,solar_flux_band_3,solar_flux_band_4,solar_flux_band_5,solar_flux_band_6,solar_flux_band_7,solar_flux_band_8,solar_flux_band_9,solar_flux_band_10,solar_flux_band_11,solar_flux_band_12,solar_flux_band_13,solar_flux_band_14,solar_flux_band_15,solar_flux_band_16,solar_flux_band_17,solar_flux_band_18,solar_flux_band_19,solar_flux_band_20,solar_flux_band_21,quality_flags</sourceBands>
+            <copyMetadata>true</copyMetadata>
+        </parameters>
+    </node>
+
+    <node id="merged_vicar"> <!-- replace with re-calibrated bands, include idepix for c2rcc-->
+        <operator>Merge</operator>
+        <sources>
+            <masterProduct>subset</masterProduct>
+<!--			<sourceProducts>vicar,idepx</sourceProducts> -->
+		 	<vicar>vicarious</vicar>
+			<idepix>idepix</idepix>
+        </sources>
+        <parameters>
+            <includes>
+                <include>
+                    <productId>vicar</productId>
+                    <namePattern>Oa.*radiance</namePattern>
+					<productId>idepix</productId>
+					<namePattern>pixel_classif_flags</namePattern>
+                </include>
+            </includes>
+        </parameters>
+    </node>
+
+	 <node id="merged_idepix"> <!-- sourceproduct plus include idepix for mph-->
+        <operator>Merge</operator>
+        <sources>
+            <masterProduct>${sourceProduct}</masterProduct>
+			<idepix>idepix</idepix>
+        </sources>
+        <parameters>
+            <includes>
+                <include>
+					<productId>idepix</productId>
+					<namePattern>pixel_classif_flags</namePattern>
+                </include>
+            </includes>
+        </parameters>
+    </node>
+	
+<!--     <node id="mph">
+        <operator>MphChl</operator>
+        <sources>
+            <sourceProduct>merged_vicar</sourceProduct>
+        </sources>
+		<parameters>
+			<validPixelExpression>!quality_flags.invalid AND (!quality_flags.land || quality_flags.fresh_inland_water) and not pixel_classif_flags.IDEPIX_CLOUD</validPixelExpression>
+			<cyanoMaxValue>1000.0</cyanoMaxValue>
+			<chlThreshForFloatFlag>500.0</chlThreshForFloatFlag>
+			<exportMph>true</exportMph>
+			<applyLowPassFilter>false</applyLowPassFilter>
+		</parameters>
+    </node> -->
+    <node id="mph">
+        <operator>MphChl</operator>
+        <sources>
+<!--            <sourceProduct>${sourceProduct}</sourceProduct> -->
+            <sourceProduct>merged_idepix</sourceProduct>
+        </sources>
+		<parameters>
+			<validPixelExpression>!quality_flags.invalid AND (!quality_flags.land || quality_flags.fresh_inland_water)</validPixelExpression>
+			<cyanoMaxValue>1000.0</cyanoMaxValue>
+			<chlThreshForFloatFlag>500.0</chlThreshForFloatFlag>
+			<exportMph>true</exportMph>
+			<applyLowPassFilter>false</applyLowPassFilter>
+		</parameters>
+    </node>
+	<node id="c2rcc">
+        <operator>c2rcc.olci</operator>
+        <sources>
+            <sourceProduct>merged_vicar</sourceProduct>
+        </sources>
+        <parameters>
+		    <salinity>1.0</salinity>
+			<outputAsRrs>true</outputAsRrs>
+		    <thresholdRtosaOOS>0.05</thresholdRtosaOOS>
+			<validPixelExpression>!quality_flags.invalid AND (!quality_flags.land || quality_flags.fresh_inland_water) and not pixel_classif_flags.IDEPIX_CLOUD</validPixelExpression>
+            <outputRtoa>false</outputRtoa>
+            <outputRtosaGc>false</outputRtosaGc>
+            <outputRtosaGcAann>false</outputRtosaGcAann>
+            <outputRpath>false</outputRpath>
+            <outputTdown>false</outputTdown>
+            <outputTup>false</outputTup>
+            <outputAcReflectance>false</outputAcReflectance>
+            <outputRhown>false</outputRhown>
+            <outputOos>false</outputOos>
+            <outputKd>false</outputKd>
+            <outputUncertainties>false</outputUncertainties>
+			<!--
+            <temperature>double</temperature>
+            <ozone>double</ozone>
+            <press>double</press>
+            <TSMfakBpart>double</TSMfakBpart>
+            <TSMfakBwit>double</TSMfakBwit>
+            <CHLexp>double</CHLexp>
+            <CHLfak>double</CHLfak>
+            <thresholdAcReflecOos>double</thresholdAcReflecOos>
+            <thresholdCloudTDown865>double</thresholdCloudTDown865>
+            <alternativeNNPath>${nnPath}</alternativeNNPath>
+            <atmosphericAuxDataPath>string</atmosphericAuxDataPath>
+            <deriveRwFromPathAndTransmittance>boolean</deriveRwFromPathAndTransmittance>
+            <useEcmwfAuxData>boolean</useEcmwfAuxData>
+            -->
+        </parameters>
+    </node> 
+	
+	 <node id="final_merge">
+		<operator>Merge</operator>
+		<sources>
+		  <masterProduct>mph</masterProduct>
+		  <sourceProducts>c2rcc</sourceProducts>
+		</sources>
+	 </node>	
+</graph>
